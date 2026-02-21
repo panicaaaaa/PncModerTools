@@ -1,9 +1,5 @@
 # 🛡️ PncModerTools --- Премиум система модерации для Minecraft
 
-![GitHub
-stars](https://img.shields.io/github/stars/yourname/PncModerTools?style=for-the-badge)
-![GitHub
-issues](https://img.shields.io/github/issues/yourname/PncModerTools?style=for-the-badge)
 ![Java](https://img.shields.io/badge/Java-21+-orange?style=for-the-badge)
 ![Spigot](https://img.shields.io/badge/Spigot%2FPaper-1.16+-green?style=for-the-badge)
 
