@@ -1,0 +1,70 @@
+plugins {
+    id 'java'
+    id("com.gradleup.shadow") version "8.3.3"
+}
+
+group = 'ua.panica.Main'
+version = '1.0'
+
+repositories {
+    mavenCentral()
+    maven { url = "https://repo.papermc.io/repository/maven-public/"}
+    maven { url = "https://oss.sonatype.org/content/groups/public/" }
+    maven { url = "https://repo.panda-lang.org/releases" }
+    maven { url = 'https://repo.xenondevs.xyz/releases' }
+    maven { url = 'https://repo.extendedclip.com/content/repositories/placeholderapi/' }
+    maven { url = "https://jitpack.io" }
+}
+
+dependencies {
+    compileOnly 'org.spigotmc:spigot-api:1.16.5-R0.1-SNAPSHOT'
+    implementation 'net.kyori:adventure-platform-bukkit:4.1.2'
+    implementation 'net.kyori:adventure-text-minimessage:4.10.1'
+    implementation 'com.zaxxer:HikariCP:4.0.3'
+    implementation 'com.h2database:h2:2.1.214'
+    implementation 'dev.rollczi:litecommands-bukkit:3.10.8'
+    implementation 'xyz.xenondevs.invui:invui:1.46'
+    implementation 'xyz.xenondevs.invui:inventory-access-r7:1.46'
+    implementation 'com.github.pengrad:java-telegram-bot-api:6.5.0'
+    compileOnly "com.gitlab.ruany:LiteBansAPI:0.6.1"
+    compileOnly 'me.clip:placeholderapi:2.11.7'
+    compileOnly 'com.mojang:authlib:1.5.25'
+    compileOnly 'net.luckperms:api:5.4'
+}
+
+def targetJavaVersion = 16
+java {
+    def javaVersion = JavaVersion.toVersion(targetJavaVersion)
+    sourceCompatibility = javaVersion
+    targetCompatibility = javaVersion
+    if (JavaVersion.current() < javaVersion) {
+        toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release.set(targetJavaVersion)
+}
+
+processResources {
+    def props = [version: version]
+    inputs.properties props
+    filteringCharset 'UTF-8'
+    filesMatching('plugin.yml') {
+        expand props
+    }
+}
+
+shadowJar {
+    archiveClassifier.set('')
+    relocate 'com.zaxxer.hikari', 'ua.panica.libs.hikari'
+    relocate 'dev.rollczi.litecommands', 'ua.panica.libs.litecommands'
+    relocate 'com.pengrad.telegrambot', 'ua.panica.libs.telegrambot'
+    relocate 'net.kyori', 'ua.panica.libs.kyori'
+    relocate 'xyz.xenondevs.invui', 'ua.panica.libs.invui'
+    relocate 'xyz.xenondevs.inventoryaccess', 'ua.panica.libs.inventoryaccess'
+    relocate 'org.h2', 'ua.panica.libs.h2'
+}
+
+tasks.build.dependsOn tasks.shadowJar

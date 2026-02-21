@@ -1,0 +1,20 @@
+name: PncModerTools
+version: '${version}'
+main: ua.panica.main.pncmodertools.PncModerTools
+api-version: '1.16'
+softdepend: [LiteBans, PlaceholderAPI]
+permissions:
+  pncmodertools.report:
+    default: true
+  pncmodertools.reports.view:
+    default: op
+  pncmodertools.reports.notify:
+    default: op
+  pncmodertools.staffwork:
+    default: op
+  pncmodertools.admin:
+    default: op
+    children:
+      pncmodertools.reports.view: true
+      pncmodertools.reports.notify: true
+      pncmodertools.staffwork: true

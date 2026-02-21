@@ -1,0 +1,117 @@
+# Точки телепортации
+checkpoint:
+  world: world
+  x: 0.5
+  y: 100.0
+  z: 0.5
+  yaw: 0.0
+  pitch: 0.0
+
+spawn:
+  world: world
+  x: 0.5
+  y: 64.0
+  z: 0.5
+  yaw: 0.0
+  pitch: 0.0
+
+# Таймер проверки
+timer:
+  default-seconds: 600
+  add-time: 300
+  actionbar-format: "<b><gradient:#69BCFF:#CDD2FF>ПРОВЕРКА</gradient></b>: <#CDD2FF>%mm:ss%</#CDD2FF>"
+  paused-message: "<bold><#69BCFF>Проверка активна.</#69BCFF></bold>"
+
+# Чат проверки
+chat:
+  prefix: "<gray>[<b><gradient:#69BCFF:#CDD2FF>ПРОВЕРКА</gradient></b><reset><gray>]"
+  role:
+    suspect: "<b><#CDD2FF>ПОДОЗРЕВАЕМЫЙ</#CDD2FF></b>"
+    moder: "<b><#CDD2FF>ПРОВЕРЯЮЩИЙ</#CDD2FF></b>"
+  format: "%prefix% %role% <white>%name%</white><gray>:</gray> <white>%message%</white>"
+
+# Наказания
+punish:
+  on-quit:
+    enabled: true
+    grace-seconds: 60
+    command: "ban %player% 7d Покинул проверку"
+  manual-ban:
+    command: "ban %player% 7d Читы (revice)"
+
+# Сообщения
+messages:
+  start:
+    chat:
+      - "<#69BCFF><gray>[<b><gradient:#69BCFF:#CDD2FF>ПРОВЕРКА</gradient></b><reset><gray>]  <white>Вы вызваны на проверку.</white>"
+    title:
+      title: "<#69BCFF>Проверка</#69BCFF>"
+      subtitle: "<#CDD2FF>Не выходите с сервера</#CDD2FF>"
+      fadein: 10
+      stay: 60
+      fadeout: 10
+    sound: "BLOCK_NOTE_BLOCK_PLING,1.0,1.5"
+
+  stop:
+    chat:
+      - "<#69BCFF>Вы прошли проверку!</#69BCFF>"
+      - "<gray>Спасибо за сотрудничество.</gray>"
+    title:
+      title: "<green>Чисто</green>"
+      subtitle: "<#CDD2FF>Спасибо за сотрудничество</#CDD2FF>"
+      fadein: 10
+      stay: 40
+      fadeout: 10
+    sound: "ENTITY_PLAYER_LEVELUP,1.0,1.0"
+
+  frozen:
+    chat: "<#69BCFF>Вы заморожены:</#69BCFF> <#CDD2FF>запрещено двигаться/взаимодействовать/использовать
+      команды.</#CDD2FF>"
+
+# GUI панель модератора
+gui:
+  title: "<gradient:#5B247A:#8E44AD>Проверка • Панель</gradient>"
+  size: 27
+
+  structure:
+    - "# # # # # # # # #"
+    - "# B # A # P # S #"
+    - "# # # # # # # # #"
+
+  items:
+    B:
+      material: REDSTONE_BLOCK
+      name: "<red><bold>Забанить</bold></red>"
+      lore:
+        - "<gray>Выдаёт бан подозреваемому"
+        - "<gray>и завершает проверку"
+
+    A:
+      material: CLOCK
+      name: "<green><bold>+5 минут</bold></green>"
+      lore:
+        - "<gray>Добавляет время к проверке"
+
+    P:
+      material: LEVER
+      name: "<yellow><bold>Пауза</bold></yellow>"
+      lore:
+        - "<gray>Ставит таймер на паузу"
+
+    T: #Можно не юзать
+      material: ENDER_PEARL
+      name: "<aqua><bold>Телепорт</bold></aqua>"
+      lore:
+        - "<gray>Телепортирует подозреваемого"
+        - "<gray>на точку проверки"
+
+    S:
+      material: BARRIER
+      name: "<red><bold>Завершить</bold></red>"
+      lore:
+        - "<gray>Завершает проверку без бана"
+
+    "#":
+      material: GRAY_STAINED_GLASS_PANE
+      name: ""
+      lore: []

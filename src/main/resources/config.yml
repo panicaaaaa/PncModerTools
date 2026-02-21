@@ -1,0 +1,80 @@
+telegram:
+  enabled: false
+
+staff-work:
+  groups:
+    enabled: true
+    staff-groups:
+      - "helper"
+      - "moder"
+
+reports:
+  cooldown: 60 # Seconds
+  notify-staff: true
+  notify-permission: "hexmodertools.reports.notify"
+
+menu:
+  title: "<gray>Репорты</gray>"
+  size: 54
+
+  structure:
+    - "# # # # # # # # #"
+    - "# x x x x x x x #"
+    - "F x x x x x x x F"
+    - "F x x x x x x x F"
+    - "# x x x x x x x #"
+    - "# # # # B # # # #"
+
+  report-item:
+    name: "<gradient:#ff0000:#ff7700>Репорт на {target}</gradient> <gray>({count})"
+    lore:
+      - ""
+      - "<gray>Нарушитель: <#69BCFF>{target}"
+      - "<gray>Количество репортов: <#69BCFF>{count}"
+      - "<gray>Статус: {status_color}{status}"
+      - ""
+      - "<#69BCFF>Репортеры:"
+      - "{reporters}"
+      - ""
+      - "<#69BCFF>Причины:"
+      - "{reasons}"
+      - ""
+      - "<white>ЛКМ <gray>- Принять все репорты"
+      - "<white>ПКМ <gray>- Закрыть все репорты"
+      - "<white>Shift + ЛКМ <gray>- Телепортироваться"
+    reporter-format: "  <#69BCFF>▸ <white>{reporter}"
+    reason-format: "  <#69BCFF>{index}. <white>{reason}"
+
+  items:
+    F:
+      material: "IRON_BARS"
+      name: " "
+      lore: []
+    B:
+      material: "PAPER"
+      name: "<gray>[<b><gradient:#69BCFF:#CDD2FF>Вернуться назад</gradient></b><reset><gray>]"
+      lore:
+        - ""
+        - "<#69BCFF>▶ <#CDEFFF>Нажмите, чтобы закрыть меню"
+        - ""
+      action: "CLOSE"
+
+    "#":
+      material: "LIGHT_BLUE_STAINED_GLASS_PANE"
+      name: " "
+      lore: []
+
+messages:
+  error_syntax: "<red>Неверное использование команды!"
+  report:
+    player-offline: "<red>Игрок <gray>{target} <red>не в сети! Репорт невозможен."
+    success: "<gray>[<b><gradient:#69BCFF:#CDD2FF>РЕПОРТЫ</gradient></b><reset><gray>] <#69BCFF>Вы успешно отправили репорт <#CDD2FF>#{id}</#CDD2FF> на игрока <#CDD2FF>{target}</#CDD2FF>!"
+    error: "<gray>[<b><gradient:#69BCFF:#CDD2FF>РЕПОРТЫ</gradient></b><reset><gray>] <#69BCFF>Произошла ошибка при отправке репорта!"
+    cannot-report-self: "<gray>[<b><gradient:#69BCFF:#CDD2FF>РЕПОРТЫ</gradient></b><reset><gray>] <#69BCFF>Вы не можете отправить репорт на самого себя!"
+    cooldown: "<gray>[<b><gradient:#69BCFF:#CDD2FF>РЕПОРТЫ</gradient></b><reset><gray>] <#69BCFF>Вы сможете отправить репорт через <#CDD2FF>{time}</#CDD2FF> секунд!"
+    staff-notification: "<gray>[<b><gradient:#69BCFF:#CDD2FF>РЕПОРТЫ</gradient></b><reset><gray>]  <#69BCFF>Новый репорт <#CDD2FF>#{id}</#CDD2FF> от <#CDD2FF>{reporter}</#CDD2FF> на <#CDD2FF>{target}</#CDD2FF>: <white>{reason}"
+
+  staffwork:
+    enabled: "<#69BCFF>✔</#69BCFF> <#CDD2FF>Режим работы <#69BCFF>включен</#69BCFF>!"
+    disabled: "<#69BCFF>✔</#69BCFF> <#CDD2FF>Режим работы <#69BCFF>выключен</#69BCFF>!"
+    disabled-simple: "<#69BCFF>✔</#69BCFF> <#CDD2FF>Режим работы <#69BCFF>выключен</#69BCFF>!"
